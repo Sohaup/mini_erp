@@ -12,16 +12,17 @@ class User
     private Uuid $uuid;
     private string $name;
     private Email $email;
-    private Password $password;
-    private Phone $phone;
+    private ?Password $password;
+    private ?Phone $phone;
     private string $avatar;
+    
     public function __construct(?Uuid $uuid = null, string $name, Email $email, Password $password, Phone $phone, string $avatar)
     {
         $uuid ? $this->uuid = $uuid : "";
         $this->name = $name;
         $this->email = $email;
-        $this->password = $password;
-        $this->phone = $phone;
+        $password ? $this->password = $password : "";
+        $phone ? $this->phone = $phone : "";
         $this->avatar = $avatar;
     }
 
